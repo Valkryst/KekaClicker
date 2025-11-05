@@ -1,0 +1,48 @@
+@import "../../style.css";
+@import "../../element/input/subdomain/_.css";
+
+html {
+    height: 100%;
+    width: 100%;
+
+    body {
+        height: 100%;
+        width: 100%;
+
+        main {
+            width: 500px;
+
+            margin: 2rem;
+            padding: 1rem;
+
+            justify-self: center;
+
+            background: var(--dracula-card);
+            border-radius: 18px;
+            box-shadow: 0 6px 32px #00000055;
+            border: 2px solid var(--dracula-accent);
+
+            h1 {
+                text-align: center;
+            }
+
+            hr {
+                margin: 1rem 0;
+
+                border: none;
+                border-top: 2px solid var(--dracula-accent);
+            }
+
+            section {
+                p {
+                    color: var(--dracula-foreground);
+                    font-size: medium;
+                }
+
+                #permission-statuses > p {
+                    margin: 0 0 0.5rem 0;
+                }
+            }
+        }
+    }
+}

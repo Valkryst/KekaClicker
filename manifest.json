@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+
+    "name": "KekaClicker",
+    "description": "Automation for Clocking-In/Out on Keka.",
+    "version": "1.0",
+
+    "action": {
+        "default_popup":"./page/popup/extension/_.html"
+    },
+    "background": {
+        "service_worker": "./js/background.js",
+        "type": "module"
+    },
+    "options_page": "./page/options/_.html",
+
+    "host_permissions": [
+        "*://*.keka.com/*",
+        "*://app.keka.com/*"
+    ],
+    "permissions": [
+        "notifications",
+        "scripting",
+        "storage",
+        "tabs"
+    ]
+}

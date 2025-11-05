@@ -1,0 +1,120 @@
+:root {
+    --dracula-bg: #282a36;
+    --dracula-card: #343746;
+    --dracula-accent: #bd93f9;
+    --dracula-cyan: #8be9fd;
+    --dracula-green: #50fa7b;
+    --dracula-pink: #ff79c6;
+    --dracula-yellow: #f1fa8c;
+    --dracula-foreground: #f8f8f2;
+    --dracula-comment: #6272a4;
+}
+
+html, body {
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    color: var(--dracula-foreground);
+    background: var(--dracula-bg);
+
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+}
+
+a {
+    color: var(--dracula-cyan);
+
+    transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+
+    &:hover {
+        color: var(--dracula-cyan);
+        text-shadow: 0 0 5px var(--dracula-cyan);
+    }
+
+    &:visited {
+        color: var(--dracula-cyan);
+    }
+}
+
+
+h1 {
+    color: var(--dracula-accent);
+    text-shadow: 0 0 4px var(--dracula-accent);
+}
+
+h2 {
+    color: var(--dracula-cyan);
+    text-shadow: 0 0 2px var(--dracula-cyan);
+}
+
+input, select, textarea {
+    font-family: inherit;
+
+    padding: 0.5rem;
+
+    border-radius: 6px;
+    border: 1px solid var(--dracula-accent);
+
+    color: var(--dracula-green);
+    background: var(--dracula-bg);
+
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:focus {
+        border-color: var(--dracula-accent);
+        box-shadow: 0 0 8px var(--dracula-accent);
+        outline: none;
+    }
+
+    &:invalid {
+        border-color: var(--dracula-pink);
+        box-shadow: 0 0 4px var(--dracula-pink);
+    }
+}
+
+button {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+
+    width: 100%;
+
+    padding: 0.5rem 1rem;
+
+    border-radius: 6px;
+    border: 2px solid var(--dracula-accent);
+
+    color: var(--dracula-foreground);
+    background: var(--dracula-bg);
+
+    cursor: pointer;
+
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        border-color: var(--dracula-accent);
+        color: var(--dracula-accent);
+        box-shadow: 0 0 5px var(--dracula-accent);
+    }
+
+    &:active {
+        background: var(--dracula-accent);
+        color: var(--dracula-bg);
+        transform: scale(0.98);
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+        border-color: var(--dracula-comment);
+        color: var(--dracula-comment);
+
+        &:hover {
+            box-shadow: none;
+            transform: none;
+        }
+    }
+}
+
+
