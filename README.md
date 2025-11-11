@@ -1,4 +1,4 @@
-KekaClicker is a Chrome extension which simplifies the process of clocking-in and clocking-out on the Keka HR platform.
+Streamline your Keka attendance with instant clock-in/out, real-time work hours tracking, and one-click time management.
 
 ## Installation
 1. Clone or download this repository to your local machine.
