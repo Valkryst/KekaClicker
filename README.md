@@ -9,3 +9,7 @@ Streamline your Keka attendance with instant clock-in/out, real-time work hours 
 6. Pin the extension to your toolbar for easy access.
 7. Click on the KekaClicker icon in the toolbar to open the extension.
 8. View the Options page to configure the extension before use.
+
+## Attribution
+
+* [Clock icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/clock)
