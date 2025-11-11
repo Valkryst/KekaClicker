@@ -143,6 +143,21 @@ export class KekaAPI {
     }
 
     /**
+     * Attempts to retrieve the effective hours (hours clocked-in) from Keka's API.
+     *
+     * @returns {Promise<String>} Effective hours. e.g. "8h 30m" for 8 hours and 30 minutes.
+     * @throws {Error} If the request fails or there is an issue calculating the effective hours.
+     */
+    async getEffectiveHours() {
+        const attendanceRecord = await this.getAttendanceRecord();
+        if (!attendanceRecord?.effectiveHoursInHHMM) {
+            throw new Error("Unable to retrieve effective hours.");
+        }
+
+        return attendanceRecord.effectiveHoursInHHMM;
+    }
+
+    /**
      * Attempts to retrieve the public profile from Keka's API.
      *
      * @returns {Promise<Object>} Public profile data.
