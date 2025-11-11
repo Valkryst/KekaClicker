@@ -1,6 +1,41 @@
 import {KekaAPI} from "../../../js/api.js";
 import {getStoredValue, SUBDOMAIN_STORE_KEY} from "../../../element/input/_.js";
 
+const STATUS_ELEMENT = document.querySelector("#clockInStatus");
+const CLOCK_BUTTON = document.querySelector("#clockInOutButton");
+
+/** Closes the popup window after a short delay. */
+function closeWindow() {
+    setTimeout(window.close, 50);
+}
+
+function logAndNotify(error, message) {
+    console.error(error);
+    new Notification(message);
+}
+
+/** Opens the extension options page after a short delay. */
+function openOptions() {
+    setTimeout(chrome.runtime.openOptionsPage, 50);
+}
+
+/**
+ * Updates the clock-in status display.
+ *
+ * @param isClockedIn {boolean} Whether the user is clocked in.
+ */
+function updateStatus(isClockedIn) {
+    if (isClockedIn) {
+        STATUS_ELEMENT.textContent = "Clocked-In";
+        STATUS_ELEMENT.style.color = "lime";
+    } else {
+        STATUS_ELEMENT.textContent = "Clocked-Out";
+        STATUS_ELEMENT.style.color = "red";
+    }
+
+    CLOCK_BUTTON.attributes.removeNamedItem("disabled");
+}
+
 // Establish connection with background script.
 const port = chrome.runtime.connect({name: "KekaClicker"});
 
@@ -8,9 +43,7 @@ const port = chrome.runtime.connect({name: "KekaClicker"});
 const subdomain = await getStoredValue(SUBDOMAIN_STORE_KEY);
 if (!subdomain) {
     new Notification("Keka subdomain is not set. Please set it in the extension options.");
-    setTimeout(() => { // Delay to ensure notification is shown before opening options.
-        chrome.runtime.openOptionsPage();
-    }, 50);
+    openOptions();
 }
 
 // Check if the API Token is still valid; if not, attempt to refresh it.
@@ -19,56 +52,36 @@ if (!(await keka.isTokenValid())) {
     try {
         await keka.refreshToken();
     } catch (error) {
-        console.error(error);
-        new Notification("Failed to refresh API token. Are you logged into Keka?");
-        setTimeout(() => { // Delay to ensure notification is shown before closing.
-            window.close();
-        }, 50);
+        logAndNotify(error, "Failed to refresh API token. Are you logged into Keka?");
+        closeWindow();
     }
 }
 
-// Immediately check if the user is clocked-in to Keka when the popup opens.
-const statusElement = document.querySelector("#clockInStatus");
-if (await keka.isClockedIn()) {
-    statusElement.textContent = "Clocked-In";
-    statusElement.style.color = "lime";
-} else {
-    statusElement.textContent = "Clocked-Out";
-    statusElement.style.color = "red";
-}
-document.querySelector("#clockInOutButton").attributes.removeNamedItem("disabled");
-
-// Retrieve and display the effective hours:
-keka.getEffectiveHours()
-    .then(effectiveHours => {
-        document.querySelector("#effectiveHours").textContent = effectiveHours;
-    })
+// Retrieve and display the clock-in status.
+keka.isClockedIn()
+    .then(isClockedIn => updateStatus(isClockedIn))
     .catch(error => {
-        console.error("Failed to retrieve effective hours:", error);
-    })
+        logAndNotify(error, "Failed to retrieve clock-in status.");
+        closeWindow();
+    });
+
+// Retrieve and display the hours worked.
+keka.getEffectiveHours()
+    .then(effectiveHours => document.querySelector("#effectiveHours").textContent = effectiveHours)
+    .catch(error => logAndNotify(error, "Failed to retrieve effective hours."))
 
 // Handle Clock In/Out button click.
 document.querySelector("#clockInOutButton").addEventListener("click", async () => {
-    const button = document.querySelector("#clockInOutButton");
-    button.setAttribute("disabled", "true");
+    CLOCK_BUTTON.setAttribute("disabled", "true");
 
-    statusElement.textContent = "Loading...";
+    STATUS_ELEMENT.textContent = "Loading...";
+    STATUS_ELEMENT.text.color = "inherit";
 
-    try {
-        if (await keka.clockInOut()) {
-            statusElement.textContent = "Clocked-In";
-            statusElement.style.color = "lime";
-        } else {
-            statusElement.textContent = "Clocked-Out";
-            statusElement.style.color = "red";
-        }
-    } catch (error) {
-        console.error(error);
-        new Notification("Failed to clock in/out.");
-        setTimeout(() => { // Delay to ensure notification is shown before closing.
-            window.close();
-        }, 50);
-    } finally {
-        button.attributes.removeNamedItem("disabled");
-    }
+    keka.clockInOut()
+        .then(isClockedIn => updateStatus(isClockedIn))
+        .catch(error => {
+            logAndNotify(error, "Failed to clock in/out.");
+            closeWindow();
+        })
+        .finally(() => CLOCK_BUTTON.attributes.removeNamedItem("disabled"))
 });
