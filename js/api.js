@@ -67,22 +67,10 @@ export class KekaAPI {
      * @throws {Error} If there is an issue determining the clock-in status.
      */
     async isClockedIn() {
-        const response = await this.getAttendanceSummary();
-        if (response?.data?.length === 0) {
-            const error = "Unable to retrieve attendance summary.";
-            new Notification(error);
-            throw new Error(error);
-        }
-
-        // Get today's attendance record.
-        const currentDate = new Date().toISOString().split("T")[0];
-        const currentRecord = response.data.find(record => record.attendanceDate.startsWith(currentDate));
-        if (!currentRecord || !currentRecord.originalTimeEntries?.length) {
-            return false;
-        }
+        const attendanceRecord = await this.getAttendanceRecord();
 
         // Get the most recent time entry for today.
-        const mostRecentEntry = currentRecord.originalTimeEntries.sort((a, b) =>
+        const mostRecentEntry = attendanceRecord.originalTimeEntries.sort((a, b) =>
             new Date(b.actualTimestamp) - new Date(a.actualTimestamp)
         )[0];
 
@@ -126,6 +114,32 @@ export class KekaAPI {
         }
 
         return response.json();
+    }
+
+    /**
+     * Attempts to retrieve the attendance record, for a specific date, from Keka's API.
+     *
+     * @param date {Date} Date for which to retrieve the attendance record. Defaults to today.
+     * @returns {Promise<Object>} Attendance record for the specified date.
+     * @throws {Error} If the request fails, or no record is found for the specified date.
+     */
+    async getAttendanceRecord(date = new Date()) {
+        if (!date || !(date instanceof Date) || isNaN(date)) {
+            throw new Error("Invalid date provided.");
+        }
+
+        const attendanceSummary = await this.getAttendanceSummary();
+        if (attendanceSummary?.data?.length === 0) {
+            throw new Error("Unable to retrieve attendance summary.");
+        }
+
+        const targetDate = date.toISOString().split("T")[0];
+        const record = attendanceSummary.data.find(record => record?.attendanceDate.startsWith(targetDate));
+        if (!record) {
+            throw new Error(`No attendance record found for ${targetDate}.`);
+        }
+
+        return record;
     }
 
     /**
