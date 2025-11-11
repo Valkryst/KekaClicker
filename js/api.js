@@ -85,7 +85,6 @@ export class KekaAPI {
         const mostRecentEntry = currentRecord.originalTimeEntries.sort((a, b) =>
             new Date(b.actualTimestamp) - new Date(a.actualTimestamp)
         )[0];
-        console.log(mostRecentEntry)
 
         return mostRecentEntry.punchStatus === 0;
     }
