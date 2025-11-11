@@ -38,6 +38,15 @@ if (await keka.isClockedIn()) {
 }
 document.querySelector("#clockInOutButton").attributes.removeNamedItem("disabled");
 
+// Retrieve and display the effective hours:
+keka.getEffectiveHours()
+    .then(effectiveHours => {
+        document.querySelector("#effectiveHours").textContent = effectiveHours;
+    })
+    .catch(error => {
+        console.error("Failed to retrieve effective hours:", error);
+    })
+
 // Handle Clock In/Out button click.
 document.querySelector("#clockInOutButton").addEventListener("click", async () => {
     const button = document.querySelector("#clockInOutButton");
