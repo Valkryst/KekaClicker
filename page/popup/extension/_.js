@@ -66,8 +66,8 @@ keka.isClockedIn()
     });
 
 // Retrieve and display the hours worked.
-keka.getEffectiveHours()
-    .then(effectiveHours => document.querySelector("#effectiveHours").textContent = effectiveHours)
+keka.getTimeClocked()
+    .then(timeClocked => document.querySelector("#timeClocked").textContent = timeClocked)
     .catch(error => logAndNotify(error, "Failed to retrieve effective hours."))
 
 // Handle Clock In/Out button click.

@@ -173,24 +173,40 @@ export class KekaAPI {
     }
 
     /**
-     * Attempts to retrieve the effective hours (hours clocked-in) from Keka's API.
+     * Attempts to retrieve the time spent clocked-in today, using Keka's API.
      *
-     * @returns {Promise<String>} Effective hours. e.g. "8h 30m" for 8 hours and 30 minutes.
-     * @throws {Error} If there is an issue calculating the effective hours.
+     * @returns {Promise<String>} Time spent clocked-in. e.g. "8h 30m" for 8 hours and 30 minutes.
+     * @throws {Error} If there is an issue calculating the time spent clocked-in.
      */
-    async getEffectiveHours() {
-        let attendanceRecord;
-        try {
-            attendanceRecord = await this.getAttendanceRecord();
-        } catch (error) {
+    async getTimeClocked() {
+        const attendanceRecord = await this.getAttendanceRecord().catch(() => null);
+        if (!attendanceRecord) {
             return "0h 0m";
         }
 
-        if (!attendanceRecord?.effectiveHoursInHHMM) {
-            throw new Error("Unable to retrieve effective hours.");
+        let totalSeconds = 0;
+        let lastClockIn = null;
+
+        for (const entry of attendanceRecord.originalTimeEntries || []) {
+            const timestamp = new Date(entry.actualTimestamp);
+
+            if (entry?.punchStatus === 0) {
+                lastClockIn = timestamp;
+            } else if (entry?.punchStatus === 1 && lastClockIn) {
+                totalSeconds += (timestamp - lastClockIn) / 1000;
+                lastClockIn = null;
+            }
         }
 
-        return attendanceRecord.effectiveHoursInHHMM;
+        if (lastClockIn) {
+            const now = await this.getCurrentDate();
+            totalSeconds += (now - lastClockIn) / 1000;
+        }
+
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+
+        return `${hours}h ${minutes}m`;
     }
 
     /**
