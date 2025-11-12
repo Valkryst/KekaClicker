@@ -14,6 +14,11 @@ KekaClicker allows you to do perform the following actions without navigating th
 7. Click on the KekaClicker icon in the toolbar to open the extension.
 8. View the Options page to configure the extension before use.
 
+## Screenshots
+
+![Screenshot of the extension popup.](https://public.valkryst.com/extension/KekaClicker/popup.png)
+![Screenshot of the extension options page.](https://public.valkryst.com/extension/KekaClicker/options.png)
+
 ## Attribution
 
 * [Clock icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/clock)
