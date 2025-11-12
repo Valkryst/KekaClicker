@@ -67,7 +67,12 @@ export class KekaAPI {
      * @throws {Error} If there is an issue determining the clock-in status.
      */
     async isClockedIn() {
-        const attendanceRecord = await this.getAttendanceRecord();
+        let attendanceRecord;
+        try {
+            attendanceRecord = await this.getAttendanceRecord();
+        } catch(error) {
+            return false;
+        }
 
         // Get the most recent time entry for today.
         const mostRecentEntry = attendanceRecord.originalTimeEntries.sort((a, b) =>
