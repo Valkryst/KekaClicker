@@ -75,7 +75,7 @@ document.querySelector("#clockInOutButton").addEventListener("click", async () =
     CLOCK_BUTTON.setAttribute("disabled", "true");
 
     STATUS_ELEMENT.textContent = "Loading...";
-    STATUS_ELEMENT.text.color = "inherit";
+    STATUS_ELEMENT.style.color = "inherit";
 
     keka.clockInOut()
         .then(isClockedIn => updateStatus(isClockedIn))
