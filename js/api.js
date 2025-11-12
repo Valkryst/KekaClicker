@@ -148,6 +148,31 @@ export class KekaAPI {
     }
 
     /**
+     * Attempts to retrieve the current date from Keka's API.
+     *
+     * @returns {Promise<Date>} Current date, according to Keka.
+     * @throws {Error} If there is an issue retrieving the current date.
+     */
+    async getCurrentDate() {
+        const response = await fetch(`${this.domain}/k/attendance/api/mytime/attendance/getcurrentdate`, {
+            credentials: "include",
+            method: "GET",
+            headers: this.#getHeaders()
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to retrieve current date: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        if (!data?.data) {
+            throw new Error("No current date data found.");
+        }
+
+        return new Date(data.data);
+    }
+
+    /**
      * Attempts to retrieve the effective hours (hours clocked-in) from Keka's API.
      *
      * @returns {Promise<String>} Effective hours. e.g. "8h 30m" for 8 hours and 30 minutes.
