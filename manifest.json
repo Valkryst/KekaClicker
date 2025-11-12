@@ -8,10 +8,10 @@
     "action": {
         "default_popup":"./page/popup/extension/_.html",
         "default_icon": {
-            "16": "./resources/favicon/16.png",
-            "48": "./resources/favicon/48.png",
-            "128": "./resources/favicon/128.png",
-            "512": "./resources/favicon/512.png"
+            "16": "resources/favicon/16.png",
+            "48": "resources/favicon/48.png",
+            "128": "resources/favicon/128.png",
+            "512": "resources/favicon/512.png"
         }
     },
     "background": {
@@ -19,10 +19,10 @@
         "type": "module"
     },
     "icons": {
-        "16": "./resources/favicon/16.png",
-        "48": "./resources/favicon/48.png",
-        "128": "./resources/favicon/128.png",
-        "512": "./resources/favicon/512.png"
+        "16": "resources/favicon/16.png",
+        "48": "resources/favicon/48.png",
+        "128": "resources/favicon/128.png",
+        "512": "resources/favicon/512.png"
     },
     "options_page": "./page/options/_.html",
 
