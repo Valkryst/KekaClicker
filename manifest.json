@@ -2,7 +2,7 @@
     "manifest_version": 3,
 
     "name": "KekaClicker",
-    "description": "Streamline your Keka attendance with instant clock-in/out, real-time work hours tracking, and one-click time management.",
+    "description": "Clock-in/out of Keka without leaving your current tab.",
     "version": "1.0",
 
     "action": {
