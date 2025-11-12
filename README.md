@@ -1,4 +1,8 @@
-Streamline your Keka attendance with instant clock-in/out, real-time work hours tracking, and one-click time management.
+KekaClicker allows you to do perform the following actions without navigating the Keka:
+
+1. Clock-in or clock-out of Keka.
+2. View your current clock-in status.
+3. View your "Hours Worked" (also known as "Effective Hours").
 
 ## Installation
 1. Clone or download this repository to your local machine.
