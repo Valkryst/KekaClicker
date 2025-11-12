@@ -79,7 +79,7 @@ export class KekaAPI {
             new Date(b.actualTimestamp) - new Date(a.actualTimestamp)
         )[0];
 
-        return mostRecentEntry.punchStatus === 0;
+        return mostRecentEntry?.punchStatus === 0;
     }
 
     /**
