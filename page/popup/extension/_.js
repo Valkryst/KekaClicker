@@ -83,5 +83,5 @@ document.querySelector("#clockInOutButton").addEventListener("click", async () =
             logAndNotify(error, "Failed to clock in/out.");
             closeWindow();
         })
-        .finally(() => CLOCK_BUTTON.attributes.removeNamedItem("disabled"))
+        .finally(() => CLOCK_BUTTON.removeAttribute("disabled"))
 });
