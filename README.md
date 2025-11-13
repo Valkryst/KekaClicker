@@ -1,10 +1,17 @@
-KekaClicker allows you to do perform the following actions without navigating the Keka:
+KekaClicker allows you to perform the following actions without navigating to Keka:
 
 1. Clock-in or clock-out of Keka.
 2. View your current clock-in status.
 3. View your "Hours Worked" (also known as "Effective Hours").
 
 ## Installation
+
+The extension can be installed from the [Chrome Web Store](https://chromewebstore.google.com/detail/kekaclicker/pefolpafkcdlkfillboipcgfgimnbegk).
+
+Please note that this repository will always have the latest changes, ahead of the Chrome Web Store release.
+
+To install from source:
+
 1. Clone or download this repository to your local machine.
 2. Open Google Chrome and navigate to `chrome://extensions/`.
 3. Enable "Developer mode" using the toggle switch in the top right corner.
