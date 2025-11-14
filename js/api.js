@@ -175,13 +175,13 @@ export class KekaAPI {
     /**
      * Attempts to retrieve the time spent clocked-in today, using Keka's API.
      *
-     * @returns {Promise<String>} Time spent clocked-in. e.g. "8h 30m" for 8 hours and 30 minutes.
+     * @returns {Promise<String>} Time spent clocked-in, in seconds.
      * @throws {Error} If there is an issue calculating the time spent clocked-in.
      */
     async getTimeClocked() {
         const attendanceRecord = await this.getAttendanceRecord().catch(() => null);
         if (!attendanceRecord) {
-            return "0h 0m";
+            return 0;
         }
 
         let totalSeconds = 0;
@@ -203,10 +203,7 @@ export class KekaAPI {
             totalSeconds += (now - lastClockIn) / 1000;
         }
 
-        const hours = Math.floor(totalSeconds / 3600);
-        const minutes = Math.floor((totalSeconds % 3600) / 60);
-
-        return `${hours}h ${minutes}m`;
+        return totalSeconds;
     }
 
     /**

@@ -5,13 +5,15 @@
         <title>KekaClicker</title>
         <link href="../../../style.css" rel="stylesheet" />
         <link href="_.css" rel="stylesheet" />
+
+        <script type="module" src="/element/clocked-time/_.js"></script>
     </head>
     <body>
         <main>
             <h1>KekaClicker</h1>
 
             <h2>Currently: <span id="clockInStatus">Loading...</span></h2>
-            <h2>Time Clocked: <span id="timeClocked">Loading...</span></h2>
+            <h2>Time Clocked: <x-clocked-time></x-clocked-time></h2>
 
             <button id="clockInOutButton" disabled>Clock-In/Out</button>
         </main>
