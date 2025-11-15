@@ -1,7 +1,7 @@
 import {KekaAPI} from "../../js/api.js";
 
 const template = document.createElement('template');
-template.innerHTML = `<span id="clockedStatus">Loading...</span>`;
+template.innerHTML = `<span>Loading...</span>`;
 
 /** Displays whether the user is currently clocked-in or clocked-out on Keka. */
 class ClockedStatusElement extends HTMLElement {
@@ -57,7 +57,7 @@ class ClockedStatusElement extends HTMLElement {
      * @returns {Promise<boolean|undefined>} Whether the user is clocked-in.
      */
     async updateDisplay(isClockedIn = undefined) {
-        const element = this.#getStatusElement();
+        const element = this.#getElement();
         if (!element) {
             console.error("Status element not found.");
             return undefined;
@@ -93,12 +93,12 @@ class ClockedStatusElement extends HTMLElement {
     }
 
     /**
-     * Retrieves the element in which to display the clocked status.
+     * Retrieves the span element in which to display the clocked status.
      *
-     * @returns {HTMLInputElement} Clocked display element.
+     * @returns {HTMLSpanElement} The span element.
      */
-    #getStatusElement() {
-        return this.querySelector("#clockedStatus");
+    #getElement() {
+        return this.querySelector("span");
     }
 }
 
