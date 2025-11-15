@@ -3,7 +3,7 @@
 
     "name": "KekaClicker",
     "description": "Clock-in/out of Keka without leaving your current tab.",
-    "version": "1.0",
+    "version": "1.1",
 
     "action": {
         "default_popup":"./page/popup/extension/_.html",
