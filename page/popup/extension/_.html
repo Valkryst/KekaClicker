@@ -6,6 +6,7 @@
         <link href="../../../style.css" rel="stylesheet" />
         <link href="_.css" rel="stylesheet" />
 
+        <script type="module" src="/element/clock-inout-button/_.js"></script>
         <script type="module" src="/element/clocked-status/_.js"></script>
         <script type="module" src="/element/clocked-time/_.js"></script>
     </head>
@@ -16,7 +17,7 @@
             <h2>Currently: <x-clocked-status></x-clocked-status></h2>
             <h2>Time Clocked: <x-clocked-time></x-clocked-time></h2>
 
-            <button id="clockInOutButton">Clock-In/Out</button>
+            <x-clock-inout-button></x-clock-inout-button>
         </main>
 
         <footer>

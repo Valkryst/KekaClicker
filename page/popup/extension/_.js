@@ -38,20 +38,19 @@ if (!(await keka.isTokenValid())) {
 }
 
 // Handle Clock In/Out button click.
-const clockButton = document.querySelector("#clockInOutButton");
-document.querySelector("#clockInOutButton").addEventListener("click", async () => {
-    clockButton.setAttribute("disabled", "true");
+const clockInOutButton = document.querySelector("x-clock-inout-button");
+clockInOutButton.addEventListener("click", async () => {
+    clockInOutButton.setEnabled(false);
 
     keka.clockInOut()
         .then(isClockedIn => {
-            console.log("Reached here")
             document.querySelector("x-clocked-status")
                 .updateDisplay(isClockedIn)
-                .then(() => clockButton.removeAttribute("disabled"))
+                .then(() => clockInOutButton.setEnabled(true))
         })
         .catch(error => {
             logAndNotify(error, "Failed to clock in/out.");
             closeWindow();
         })
-        .finally(() => clockButton.removeAttribute("disabled"))
+        .finally(() => clockInOutButton.setEnabled(true));
 });
