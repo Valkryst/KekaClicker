@@ -32,10 +32,7 @@ class ClockedStatusElement extends HTMLElement {
     /**
      * Initializes the element after construction.
      *
-     * Creates the backing API client, performs an initial render of the clocked status, and schedules periodic
-     * refreshes.
-     *
-     * @returns {Promise<void>} A promise that resolves once the initial display update and interval registration are complete.
+     * @returns {Promise<void>} A promise which resolves when the element is initialized.
      */
     async #initialize() {
         try {
