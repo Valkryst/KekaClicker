@@ -1,7 +1,7 @@
 import {KekaAPI} from "../../js/api.js";
 
 const template = document.createElement('template');
-template.innerHTML = `<span id="timeClocked">Loading...</span>`;
+template.innerHTML = `<span>Loading...</span>`;
 
 /** Displays the amount of time that the user has been clocked-in on Keka today. */
 class ClockedTimeElement extends HTMLElement {
@@ -68,7 +68,7 @@ class ClockedTimeElement extends HTMLElement {
             return;
         }
 
-        const element = this.#getTimeElement();
+        const element = this.#getElement();
         if (!element) {
             console.error("Time element not found.");
             return;
@@ -84,12 +84,12 @@ class ClockedTimeElement extends HTMLElement {
     }
 
     /**
-     * Retrieves the element in which to display the time spent clocked-in.
+     * Retrieves the span element in which to display the time spent clocked-in.
      *
-     * @returns {HTMLInputElement} Time display element.
+     * @returns {HTMLSpanElement} The span element.
      */
-    #getTimeElement() {
-        return this.querySelector("#timeClocked");
+    #getElement() {
+        return this.querySelector("span");
     }
 }
 
