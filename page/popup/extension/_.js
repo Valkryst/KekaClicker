@@ -1,9 +1,6 @@
 import {KekaAPI} from "../../../js/api.js";
 import {getStoredValue, SUBDOMAIN_STORE_KEY} from "../../../element/input/_.js";
 
-const STATUS_ELEMENT = document.querySelector("#clockInStatus");
-const CLOCK_BUTTON = document.querySelector("#clockInOutButton");
-
 /** Closes the popup window after a short delay. */
 function closeWindow() {
     setTimeout(window.close, 50);
@@ -17,23 +14,6 @@ function logAndNotify(error, message) {
 /** Opens the extension options page after a short delay. */
 function openOptions() {
     setTimeout(chrome.runtime.openOptionsPage, 50);
-}
-
-/**
- * Updates the clock-in status display.
- *
- * @param isClockedIn {boolean} Whether the user is clocked in.
- */
-function updateStatus(isClockedIn) {
-    if (isClockedIn) {
-        STATUS_ELEMENT.textContent = "Clocked-In";
-        STATUS_ELEMENT.style.color = "lime";
-    } else {
-        STATUS_ELEMENT.textContent = "Clocked-Out";
-        STATUS_ELEMENT.style.color = "red";
-    }
-
-    CLOCK_BUTTON.attributes.removeNamedItem("disabled");
 }
 
 // Establish connection with background script.
@@ -57,26 +37,21 @@ if (!(await keka.isTokenValid())) {
     }
 }
 
-// Retrieve and display the clock-in status.
-keka.isClockedIn()
-    .then(isClockedIn => updateStatus(isClockedIn))
-    .catch(error => {
-        logAndNotify(error, "Failed to retrieve clock-in status.");
-        closeWindow();
-    });
-
 // Handle Clock In/Out button click.
+const clockButton = document.querySelector("#clockInOutButton");
 document.querySelector("#clockInOutButton").addEventListener("click", async () => {
-    CLOCK_BUTTON.setAttribute("disabled", "true");
-
-    STATUS_ELEMENT.textContent = "Loading...";
-    STATUS_ELEMENT.style.color = "inherit";
+    clockButton.setAttribute("disabled", "true");
 
     keka.clockInOut()
-        .then(isClockedIn => updateStatus(isClockedIn))
+        .then(isClockedIn => {
+            console.log("Reached here")
+            document.querySelector("x-clocked-status")
+                .updateDisplay(isClockedIn)
+                .then(() => clockButton.removeAttribute("disabled"))
+        })
         .catch(error => {
             logAndNotify(error, "Failed to clock in/out.");
             closeWindow();
         })
-        .finally(() => CLOCK_BUTTON.removeAttribute("disabled"))
+        .finally(() => clockButton.removeAttribute("disabled"))
 });
