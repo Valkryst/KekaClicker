@@ -1,4 +1,4 @@
-import {getStoredValue, SUBDOMAIN_STORE_KEY} from "../element/input/_.js";
+import {getStoredValue, SUBDOMAIN_STORE_KEY} from "./storage.js";
 
 /**
  * Amount of time to wait between polling checks, in milliseconds.

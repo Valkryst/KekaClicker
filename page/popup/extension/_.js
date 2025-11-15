@@ -1,5 +1,5 @@
 import {KekaAPI} from "../../../js/api.js";
-import {getStoredValue, SUBDOMAIN_STORE_KEY} from "../../../element/input/_.js";
+import {getStoredValue, SUBDOMAIN_STORE_KEY} from "../../../js/storage.js";
 
 /** Closes the popup window after a short delay. */
 function closeWindow() {
@@ -38,13 +38,13 @@ if (!(await keka.isTokenValid())) {
 }
 
 // Handle Clock In/Out button click.
-const clockInOutButton = document.querySelector("x-clock-inout-button");
+const clockInOutButton = document.querySelector("x-attendance-toggle");
 clockInOutButton.addEventListener("click", async () => {
     clockInOutButton.setEnabled(false);
 
     keka.clockInOut()
         .then(isClockedIn => {
-            document.querySelector("x-clocked-status")
+            document.querySelector("x-attendance-status")
                 .updateDisplay(isClockedIn)
                 .then(() => clockInOutButton.setEnabled(true))
         })

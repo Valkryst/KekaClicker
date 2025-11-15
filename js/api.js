@@ -1,4 +1,4 @@
-import {getStoredValue, setStoredValue, SUBDOMAIN_STORE_KEY, TOKEN_STORE_KEY} from "../element/input/_.js";
+import {getStoredValue, setStoredValue, SUBDOMAIN_STORE_KEY, TOKEN_STORE_KEY} from "./storage.js";
 import {getToken} from "./utility.js";
 
 export class KekaAPI {

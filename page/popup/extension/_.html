@@ -6,18 +6,18 @@
         <link href="../../../style.css" rel="stylesheet" />
         <link href="_.css" rel="stylesheet" />
 
-        <script type="module" src="/element/clock-inout-button/_.js"></script>
-        <script type="module" src="/element/clocked-status/_.js"></script>
-        <script type="module" src="/element/clocked-time/_.js"></script>
+        <script type="module" src="/component/attendance/toggle/_.js"></script>
+        <script type="module" src="/component/attendance/status/_.js"></script>
+        <script type="module" src="/component/attendance/time/_.js"></script>
     </head>
     <body>
         <main>
             <h1>KekaClicker</h1>
 
-            <h2>Currently: <x-clocked-status></x-clocked-status></h2>
-            <h2>Time Clocked: <x-clocked-time></x-clocked-time></h2>
+            <h2>Currently: <x-attendance-status></x-attendance-status></h2>
+            <h2>Time Clocked: <x-attendance-time></x-attendance-time></h2>
 
-            <x-clock-inout-button></x-clock-inout-button>
+            <x-attendance-toggle></x-attendance-toggle>
         </main>
 
         <footer>

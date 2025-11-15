@@ -1,11 +1,11 @@
-import {KekaAPI} from "../../js/api.js";
+import {KekaAPI} from "../../../js/api.js";
 
 const template = document.createElement('template');
 template.innerHTML = `<span>Loading...</span>`;
 
 /** Displays whether the user is currently clocked-in or clocked-out on Keka. */
-class ClockedStatusElement extends HTMLElement {
-    /** Constructs a new {@link ClockedStatusElement}. */
+class AttendanceStatusElement extends HTMLElement {
+    /** Constructs a new {@link AttendanceStatusElement}. */
     constructor() {
         super();
         this.append(template.content.cloneNode(true));
@@ -99,4 +99,4 @@ class ClockedStatusElement extends HTMLElement {
     }
 }
 
-customElements.define("x-clocked-status", ClockedStatusElement);
+customElements.define("x-attendance-status", AttendanceStatusElement);

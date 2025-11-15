@@ -1,5 +1,5 @@
 @import "../../style.css";
-@import "../../element/input/subdomain/_.css";
+@import "../../component/input/subdomain/_.css";
 
 html {
     height: 100%;

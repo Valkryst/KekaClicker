@@ -1,4 +1,4 @@
-import { SUBDOMAIN_STORE_KEY, getStoredValue, setStoredValue } from "../_.js";
+import { SUBDOMAIN_STORE_KEY, getStoredValue, setStoredValue } from "../../../js/storage.js";
 
 const template = document.createElement('template');
 template.innerHTML = `
