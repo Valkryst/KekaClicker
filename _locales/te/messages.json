@@ -1,0 +1,62 @@
+{
+    "attendanceStatusClockedIn": {
+        "message": "క్లాక్-ఇన్"
+    },
+    "attendanceStatusClockedOut": {
+        "message": "క్లాక్-అవుట్"
+    },
+    "attendanceStatusError": {
+        "message": "పొరపాటు"
+    },
+    "attendanceStatusLoading": {
+        "message": "లోడవుతోంది..."
+    },
+    "attendanceTimeError": {
+        "message": "పొరపాటు"
+    },
+    "attendanceToggle": {
+        "message": "క్లాక్-ఇన్/అవుట్"
+    },
+    "extensionName": {
+        "message": "KekaClicker"
+    },
+    "extensionDescription": {
+        "message": "మీ ప్రస్తుత ట్యాబ్‌లో ఉండిపోయి Kekaలో క్లాక్-ఇన్/అవుట్ చేయండి."
+    },
+    "optionsTitle": {
+        "message": "KekaClicker సెట్టింగులు"
+    },
+    "optionsSubdomainDescription": {
+        "message": "మీ Keka 'https://example.keka.com' అయితే, క్రింద 'example' ని నమోదు చేయండి."
+    },
+    "optionsSubdomainTitle": {
+        "message": "Keka సబ్‌డొమైన్"
+    },
+    "optionsSubdomainInvalid": {
+        "message": "దయచేసి సరైన సబ్‌డొమైన్‌ను నమోదు చేయండి. హోస్ట్ పేరు 'example.keka.com' అయితే, 'example' మాత్రమే నమోదు చేయండి."
+    },
+    "optionsExtensionPermissionsTitle": {
+        "message": "ఎక్స్టెన్షన్ అనుమతులు"
+    },
+    "popupCreatedBy": {
+        "message": "Valkryst సృష్టించారు"
+    },
+    "popupCurrently": {
+        "message": "ప్రస్తుతం"
+    },
+    "popupFailedToToggleAttendance": {
+        "message": "క్లాక్-ఇన్/అవుట్ చేయడం విఫలమైంది."
+    },
+    "popupFailedToRefreshToken": {
+        "message": "API టోకెన్‌ను పునరుద్ధరించడం విఫలమైంది. Kekaలో మీరు లాగిన్ అయ్యారా?"
+    },
+    "popupFailedNoSubdomainSet": {
+        "message": "Keka సబ్‌డొమైన్ సెట్ చేయబడలేదు. దయచేసి ఎక్స్టెన్షన్ సెట్టింగులలో దానిని సెట్ చేయండి."
+    },
+    "popupOptions": {
+        "message": "ఎంపికలు"
+    },
+    "popupTimeClocked": {
+        "message": "క్లాక్ చేసిన సమయం"
+    }
+}
