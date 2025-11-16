@@ -1,0 +1,62 @@
+{
+    "attendanceStatusClockedIn": {
+        "message": "क्लॉक-इन"
+    },
+    "attendanceStatusClockedOut": {
+        "message": "क्लॉक-आउट"
+    },
+    "attendanceStatusError": {
+        "message": "त्रुटि"
+    },
+    "attendanceStatusLoading": {
+        "message": "लोड हो रहा है..."
+    },
+    "attendanceTimeError": {
+        "message": "त्रुटि"
+    },
+    "attendanceToggle": {
+        "message": "क्लॉक-इन/आउट"
+    },
+    "extensionName": {
+        "message": "KekaClicker"
+    },
+    "extensionDescription": {
+        "message": "अपने वर्तमान टैब को छोड़े बिना केका में क्लॉक-इन/आउट करें।"
+    },
+    "optionsTitle": {
+        "message": "KekaClicker सेटिंग्स"
+    },
+    "optionsSubdomainDescription": {
+        "message": "यदि आपका केका 'https://example.keka.com' है, तो नीचे 'example' दर्ज करें।"
+    },
+    "optionsSubdomainTitle": {
+        "message": "केका सबडोमेन"
+    },
+    "optionsSubdomainInvalid": {
+        "message": "कृपया एक वैध सबडोमेन दर्ज करें। यदि होस्टनेम 'example.keka.com' है, तो केवल 'example' दर्ज करें।"
+    },
+    "optionsExtensionPermissionsTitle": {
+        "message": "एक्सटेंशन अनुमतियाँ"
+    },
+    "popupCreatedBy": {
+        "message": "Valkryst द्वारा निर्मित"
+    },
+    "popupCurrently": {
+        "message": "वर्तमान में"
+    },
+    "popupFailedToToggleAttendance": {
+        "message": "क्लॉक-इन/आउट करने में विफल।"
+    },
+    "popupFailedToRefreshToken": {
+        "message": "API टोकन ताज़ा करने में विफल। क्या आप केका में लॉगिन हैं?"
+    },
+    "popupFailedNoSubdomainSet": {
+        "message": "केका सबडोमेन सेट नहीं किया गया है। कृपया एक्सटेंशन सेटिंग्स में इसे सेट करें।"
+    },
+    "popupOptions": {
+        "message": "विकल्प"
+    },
+    "popupTimeClocked": {
+        "message": "क्लॉक किया गया समय"
+    }
+}
