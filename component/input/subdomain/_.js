@@ -25,7 +25,7 @@ class SubdomainInputElement extends HTMLElement {
         if (inputElement.checkValidity()) {
             setStoredValue(SUBDOMAIN_STORE_KEY, this.#getInputValue());
         } else {
-            inputElement.setCustomValidity("Please enter a valid subdomain. If the hostname is 'example.keka.com', enter 'example' only.");
+            inputElement.setCustomValidity(chrome.i18n.getMessage("optionsSubdomainInvalid"));
         }
 
         inputElement.reportValidity();

@@ -1,0 +1,82 @@
+{
+    "attendanceStatusClockedIn": {
+        "message": "Clocked-In",
+        "description": "Label to use when the user is clocked-in to Keka."
+    },
+    "attendanceStatusClockedOut": {
+        "message": "Clocked-Out",
+        "description": "Label to use when the user is clocked-out of Keka."
+    },
+    "attendanceStatusError": {
+        "message": "Error",
+        "description": "Label to use if an error occurred while determining whether the user is clocked-in or clocked-out of Keka."
+    },
+    "attendanceStatusLoading": {
+        "message": "Loading...",
+        "description": "Label to use while determining whether the user is clocked-in or clocked-out of Keka."
+    },
+    "attendanceTimeError": {
+        "message": "Error",
+        "description": "Label to use if an error occurred while retrieving the time spent clocked-in to Keka today."
+    },
+    "attendanceToggle": {
+        "message": "Clock-In/Out",
+        "description": "Text to display on the attendance toggle button."
+    },
+    "extensionName": {
+        "message": "KekaClicker",
+        "description": "Extension name."
+    },
+    "extensionDescription": {
+        "message": "Clock-in/out of Keka without leaving your current tab.",
+        "description": "Extension description."
+    },
+    "optionsTitle": {
+        "message": "KekaClicker Settings",
+        "description": "Title for the options page."
+    },
+    "optionsSubdomainDescription": {
+        "message": "If your Keka is 'https://example.keka.com', then enter 'example' below.",
+        "description": "Description of how to retrieve and set the Keka subdomain setting."
+    },
+    "optionsSubdomainTitle": {
+        "message": "Keka Subdomain",
+        "description": "Title for the section for setting the user's company's Keka subdomain."
+    },
+    "optionsSubdomainInvalid": {
+        "message": "Please enter a valid subdomain. If the hostname is 'example.keka.com', enter 'example' only.",
+        "description": "Message to display if the user enters an invalid subdomain."
+    },
+    "optionsExtensionPermissionsTitle": {
+        "message": "Extension Permissions",
+        "description": "Title for the section which lists the current availability of each permission required by the extension."
+    },
+    "popupCreatedBy": {
+        "message": "Created by Valkryst",
+        "description": "Label for the UI link which opens my GitHub profile."
+    },
+    "popupCurrently": {
+        "message": "Currently",
+        "description": "Label displayed to the left of attendanceStatusClockedIn/attendanceStatusClockedOut."
+    },
+    "popupFailedToToggleAttendance": {
+        "message": "Failed to clock-in/out.",
+        "description": "Notification message to display if there is a failure clocking-in or clocking-out of Keka."
+    },
+    "popupFailedToRefreshToken": {
+        "message": "Failed to refresh API token. Are you logged-in to Keka?",
+        "description": "Notification message to display if the API token cannot be refreshed."
+    },
+    "popupFailedNoSubdomainSet": {
+        "message": "Keka subdomain has not been set. Please set it in the extension settings.",
+        "description": "Notification message to display if the Keka subdomain setting has not been set."
+    },
+    "popupOptions": {
+        "message": "Options",
+        "description": "Label for the UI link which opens the options page."
+    },
+    "popupTimeClocked": {
+        "message": "Time Clocked",
+        "description": "Label displayed to the left of the amount of time spent clocked-in to Keka today."
+    }
+}

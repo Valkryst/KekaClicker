@@ -76,7 +76,7 @@ class AttendanceTimeElement extends HTMLElement {
             element.textContent = this.#formatTime(secondsClocked);
         } catch (error) {
             console.error(error);
-            element.textContent = "Error";
+            element.textContent = chrome.i18n.getMessage("attendanceTimeError");
         }
     }
 

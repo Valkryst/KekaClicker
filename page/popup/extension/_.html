@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>KekaClicker</title>
+        <title>__MSG_extensionName__</title>
         <link href="../../../style.css" rel="stylesheet" />
         <link href="_.css" rel="stylesheet" />
 
@@ -10,21 +10,23 @@
         <script type="module" src="/component/attendance/status/_.js"></script>
         <script type="module" src="/component/attendance/time/_.js"></script>
     </head>
+
     <body>
         <main>
-            <h1>KekaClicker</h1>
+            <h1>__MSG_extensionName__</h1>
 
-            <h2>Currently: <x-attendance-status></x-attendance-status></h2>
-            <h2>Time Clocked: <x-attendance-time></x-attendance-time></h2>
+            <h2>__MSG_popupCurrently__: <x-attendance-status></x-attendance-status></h2>
+            <h2>__MSG_popupTimeClocked__: <x-attendance-time></x-attendance-time></h2>
 
             <x-attendance-toggle></x-attendance-toggle>
         </main>
 
         <footer>
-            <a href="/page/options/_.html" target="_blank">Options</a>
-            <a href="https://github.com/Valkryst/KekaClicker" target="_blank">Created by Valkryst</a>
+            <a href="/page/options/_.html" target="_blank">__MSG_popupOptions__</a>
+            <a href="https://github.com/Valkryst/KekaClicker" target="_blank">__MSG_popupCreatedBy__</a>
         </footer>
-
-        <script type="module" src="_.js"></script>
     </body>
+
+    <script type="module" src="_.js"></script>
+    <script src="../../../js/i18n.js"></script>
 </html>

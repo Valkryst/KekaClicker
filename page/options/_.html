@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>KekaClicker Options</title>
+        <title>__MSG_optionsTitle__</title>
 
         <meta charset="utf-8"/>
 
@@ -13,20 +13,22 @@
 
     <body>
         <main>
-            <h1>KekaClicker Settings</h1>
+            <h1>__MSG_optionsTitle__</h1>
 
             <section>
-                <h2><span class="icon">🌐</span> Keka Subdomain</h2>
-                <p>If your Keka is <i>https://example.keka.com</i>, then enter <i>example</i> below.</p>
+                <h2><span class="icon">🌐</span> __MSG_optionsSubdomainTitle__</h2>
+                <p>__MSG_optionsSubdomainDescription__</p>
                 <x-subdomain-input></x-subdomain-input>
             </section>
 
             <hr />
 
             <section>
-                <h2><span class="icon">🔒</span> Extension Permissions</h2>
+                <h2><span class="icon">🔒</span> __MSG_optionsExtensionPermissionsTitle__</h2>
                 <div id="permission-statuses"></div>
             </section>
         </main>
     </body>
+
+    <script src="../../js/i18n.js"></script>
 </html>

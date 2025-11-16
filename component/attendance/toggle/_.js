@@ -1,5 +1,5 @@
 const template = document.createElement('template');
-template.innerHTML = `<button>Clock-In/Out</button>`;
+template.innerHTML = `<button></button>`;
 
 /** Allows the user to clock-in or clock-out of Keka, depending on their current clocked status. */
 class AttendanceToggleElement extends HTMLElement {
@@ -7,6 +7,8 @@ class AttendanceToggleElement extends HTMLElement {
     constructor() {
         super();
         this.append(template.content.cloneNode(true));
+
+        this.#getElement().textContent = chrome.i18n.getMessage("attendanceToggle");
     }
 
     /**

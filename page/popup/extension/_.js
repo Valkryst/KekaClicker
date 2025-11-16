@@ -22,7 +22,7 @@ const port = chrome.runtime.connect({name: "KekaClicker"});
 // Check if the subdomain is set; if not, prompt the user to set it.
 const subdomain = await getStoredValue(SUBDOMAIN_STORE_KEY);
 if (!subdomain) {
-    new Notification("Keka subdomain is not set. Please set it in the extension options.");
+    new Notification(chrome.i18n.getMessage("popupFailedNoSubdomainSet"));
     openOptions();
 }
 
@@ -32,7 +32,7 @@ if (!(await keka.isTokenValid())) {
     try {
         await keka.refreshToken();
     } catch (error) {
-        logAndNotify(error, "Failed to refresh API token. Are you logged into Keka?");
+        logAndNotify(error, chrome.i18n.getMessage("popupFailedToRefreshToken"));
         closeWindow();
     }
 }
@@ -49,7 +49,7 @@ clockInOutButton.addEventListener("click", async () => {
                 .then(() => clockInOutButton.setEnabled(true))
         })
         .catch(error => {
-            logAndNotify(error, "Failed to clock in/out.");
+            logAndNotify(error, chrome.i18n.getMessage("popupFailedToToggleAttendance"));
             closeWindow();
         })
         .finally(() => clockInOutButton.setEnabled(true));

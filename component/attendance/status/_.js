@@ -1,7 +1,7 @@
 import {KekaAPI} from "../../../js/api.js";
 
 const template = document.createElement('template');
-template.innerHTML = `<span>Loading...</span>`;
+template.innerHTML = `<span data-i18n="attendanceStatusLoading"></span>`;
 
 /** Displays whether the user is currently clocked-in or clocked-out on Keka. */
 class AttendanceStatusElement extends HTMLElement {
@@ -35,6 +35,8 @@ class AttendanceStatusElement extends HTMLElement {
      * @returns {Promise<void>} A promise which resolves when the element is initialized.
      */
     async #initialize() {
+        this.#getElement().textContent = chrome.i18n.getMessage("attendanceStatusLoading");
+
         try {
             this.api = await KekaAPI.create();
         } catch (error) {
@@ -66,23 +68,23 @@ class AttendanceStatusElement extends HTMLElement {
                 return undefined;
             }
 
-            element.textContent = "Loading...";
+            element.textContent = chrome.i18n.getMessage("attendanceStatusLoading");
             element.style.color = "inherit";
 
             try {
                 isClockedIn = await this.api.isClockedIn();
             } catch (error) {
                 console.error(error);
-                element.textContent = "Error";
+                element.textContent = chrome.i18n.getMessage("attendanceStatusError");
                 return undefined;
             }
         }
 
         if (isClockedIn) {
-            element.textContent = "Clocked-In";
+            element.textContent = chrome.i18n.getMessage("attendanceStatusClockedIn") + "!";
             element.style.color = "lime";
         } else {
-            element.textContent = "Clocked-Out";
+            element.textContent = chrome.i18n.getMessage("attendanceStatusClockedOut");
             element.style.color = "red";
         }
 
