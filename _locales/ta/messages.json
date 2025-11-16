@@ -1,0 +1,62 @@
+{
+    "attendanceStatusClockedIn": {
+        "message": "கணக்கில் சேர்க்கப்பட்டது"
+    },
+    "attendanceStatusClockedOut": {
+        "message": "கணக்கில் இருந்து வெளியேறியது"
+    },
+    "attendanceStatusError": {
+        "message": "பிழை"
+    },
+    "attendanceStatusLoading": {
+        "message": "ஏற்றுகிறது..."
+    },
+    "attendanceTimeError": {
+        "message": "பிழை"
+    },
+    "attendanceToggle": {
+        "message": "கணக்கில் சேர்/வெளியேறு"
+    },
+    "extensionName": {
+        "message": "KekaClicker"
+    },
+    "extensionDescription": {
+        "message": "உங்கள் தற்போதைய தாவலை விட்டு வெளியேறாமல் Kekaவில் கணக்கில் சேரவும்/வெளியேறவும்."
+    },
+    "optionsTitle": {
+        "message": "KekaClicker அமைப்புகள்"
+    },
+    "optionsSubdomainDescription": {
+        "message": "உங்கள் Keka 'https://example.keka.com' எனில், கீழே 'example' என உள்ளிடவும்."
+    },
+    "optionsSubdomainTitle": {
+        "message": "Keka சப்டொமைன்"
+    },
+    "optionsSubdomainInvalid": {
+        "message": "செல்லுபடியாகும் சப்டொமைனை உள்ளிடவும். ஹோஸ்ட்பெயர் 'example.keka.com' எனில், 'example' மட்டும் உள்ளிடவும்."
+    },
+    "optionsExtensionPermissionsTitle": {
+        "message": "எக்ஸ்டென்ஷன் அனுமதிகள்"
+    },
+    "popupCreatedBy": {
+        "message": "Valkryst உருவாக்கியது"
+    },
+    "popupCurrently": {
+        "message": "தற்போது"
+    },
+    "popupFailedToToggleAttendance": {
+        "message": "கணக்கில் சேர/வெளியேற தோல்வி."
+    },
+    "popupFailedToRefreshToken": {
+        "message": "API டோக்கனை புதுப்பிக்க முடியவில்லை. Kekaவில் உள்நுழைந்திருக்கிறீர்களா?"
+    },
+    "popupFailedNoSubdomainSet": {
+        "message": "Keka சப்டொமைன் அமைக்கப்படவில்லை. எக்ஸ்டென்ஷன் அமைப்புகளில் அமைக்கவும்."
+    },
+    "popupOptions": {
+        "message": "அமைப்புகள்"
+    },
+    "popupTimeClocked": {
+        "message": "கணக்கில் செலவிட்ட நேரம்"
+    }
+}
