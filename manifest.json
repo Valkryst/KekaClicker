@@ -28,7 +28,7 @@
     "options_page": "./page/options/_.html",
 
     "host_permissions": [
-        "*://*.keka.com/*"
+        "https://*.keka.com/*"
     ],
     "permissions": [
         "notifications",
