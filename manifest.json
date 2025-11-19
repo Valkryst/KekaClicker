@@ -34,7 +34,6 @@
     "permissions": [
         "notifications",
         "scripting",
-        "storage",
-        "tabs"
+        "storage"
     ]
 }
