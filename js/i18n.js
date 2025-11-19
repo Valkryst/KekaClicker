@@ -12,8 +12,6 @@ while (node = walker.nextNode()) {
     }
 
     node.nodeValue = node.nodeValue.replace(regex, (_, key) => {
-        console.log(key)
-        console.log(chrome.i18n.getMessage(key))
         return chrome.i18n.getMessage(key)?.trim() || "Unknown";
     });
 }
