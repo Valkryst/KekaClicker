@@ -10,7 +10,6 @@ class AttendanceStatusElement extends HTMLElement {
         super();
         this.append(template.content.cloneNode(true));
 
-        this.api = null;
         this.refreshIntervalId = null;
 
         this.#initialize();
@@ -37,12 +36,6 @@ class AttendanceStatusElement extends HTMLElement {
     async #initialize() {
         this.#getElement().textContent = chrome.i18n.getMessage("attendanceStatusLoading");
 
-        try {
-            this.api = await KekaAPI.create();
-        } catch (error) {
-            console.error(error);
-        }
-
         await this.updateDisplay();
         this.refreshIntervalId = window.setInterval(this.updateDisplay.bind(this), 1000 * 60);
     }
@@ -56,6 +49,14 @@ class AttendanceStatusElement extends HTMLElement {
      * @returns {Promise<boolean|undefined>} Whether the user is clocked-in.
      */
     async updateDisplay(isClockedIn = undefined) {
+        let api;
+        try {
+            api = await KekaAPI.create();
+        } catch (error) {
+            console.error(error);
+            return undefined;
+        }
+
         const element = this.#getElement();
         if (!element) {
             console.error("Status element not found.");
@@ -63,7 +64,7 @@ class AttendanceStatusElement extends HTMLElement {
         }
 
         if (!isClockedIn) {
-            if (!this.api) {
+            if (!api) {
                 console.error("API not initialized.");
                 return undefined;
             }
@@ -72,7 +73,7 @@ class AttendanceStatusElement extends HTMLElement {
             element.style.color = "inherit";
 
             try {
-                isClockedIn = await this.api.isClockedIn();
+                isClockedIn = await api.isClockedIn();
             } catch (error) {
                 console.error(error);
                 element.textContent = chrome.i18n.getMessage("attendanceStatusError");

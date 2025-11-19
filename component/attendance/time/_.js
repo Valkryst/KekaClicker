@@ -10,7 +10,6 @@ class AttendanceTimeElement extends HTMLElement {
         super();
         this.append(template.content.cloneNode(true));
 
-        this.api = null;
         this.refreshIntervalId = null;
 
         this.#initialize();
@@ -35,14 +34,8 @@ class AttendanceTimeElement extends HTMLElement {
      * @returns {Promise<void>} A promise which resolves when the element is initialized.
      */
     async #initialize() {
-        try {
-            this.api = await KekaAPI.create();
-        } catch (error) {
-            console.error(error);
-        }
-
-        await this.#updateDisplay();
-        this.refreshIntervalId = window.setInterval(this.#updateDisplay.bind(this), 1000 * 60);
+        await this.updateDisplay();
+        this.refreshIntervalId = window.setInterval(this.updateDisplay.bind(this), 1000 * 60);
     }
 
     /**
@@ -59,8 +52,16 @@ class AttendanceTimeElement extends HTMLElement {
     }
 
     /** Fetches the latest clocked-in time from Keka and updates the display. */
-    async #updateDisplay() {
-        if (!this.api) {
+    async updateDisplay() {
+        let api;
+        try {
+            api = await KekaAPI.create();
+        } catch (error) {
+            console.error(error);
+            return;
+        }
+
+        if (!api) {
             console.error("API not initialized.");
             return;
         }
@@ -72,7 +73,7 @@ class AttendanceTimeElement extends HTMLElement {
         }
 
         try {
-            const secondsClocked = await this.api.getTimeClocked();
+            const secondsClocked = await api.getTimeClocked();
             element.textContent = this.#formatTime(secondsClocked);
         } catch (error) {
             console.error(error);

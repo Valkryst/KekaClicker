@@ -28,17 +28,25 @@ if (!subdomain) {
 
 // Check if the API Token is still valid; if not, attempt to refresh it.
 const keka = await KekaAPI.create();
-if (!(await keka.isTokenValid())) {
-    try {
-        await keka.refreshToken();
-    } catch (error) {
-        logAndNotify(error, chrome.i18n.getMessage("popupFailedToRefreshToken"));
+const clockInOutButton = document.querySelector("x-attendance-toggle");
+
+keka.isTokenValid()
+    .then(isTokenValid => {
+        if (!isTokenValid) {
+            keka.refreshToken()
+                .then(() => {
+                    console.log("Token has been refreshed. Updating UI elements.")
+                    document.querySelector("x-attendance-status").updateDisplay();
+                    document.querySelector("x-attendance-time").updateDisplay();
+                })
+        }
+    })
+    .catch(error => {
+        logAndNotify(error, chrome.i18n.getMessage("popupFailedToValidateToken"));
         closeWindow();
-    }
-}
+    });
 
 // Handle Clock In/Out button click.
-const clockInOutButton = document.querySelector("x-attendance-toggle");
 clockInOutButton.addEventListener("click", async () => {
     clockInOutButton.setEnabled(false);
 
