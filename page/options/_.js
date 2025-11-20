@@ -1,4 +1,4 @@
-const REQUIRED_PERMISSIONS = ["Notifications", "Scripting", "Storage", "Tabs"];
+const REQUIRED_PERMISSIONS = ["Notifications", "Scripting", "Storage"];
 
 /**
  * Determines whether the specified permission has been granted.
