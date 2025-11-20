@@ -82,7 +82,7 @@ class AttendanceStatusElement extends HTMLElement {
         }
 
         if (isClockedIn) {
-            element.textContent = chrome.i18n.getMessage("attendanceStatusClockedIn") + "!";
+            element.textContent = chrome.i18n.getMessage("attendanceStatusClockedIn");
             element.style.color = "lime";
         } else {
             element.textContent = chrome.i18n.getMessage("attendanceStatusClockedOut");
