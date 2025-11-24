@@ -1,5 +1,5 @@
 const template = document.createElement('template');
-template.innerHTML = `<button></button>`;
+template.innerHTML = `<button disabled></button>`;
 
 /** Allows the user to clock-in or clock-out of Keka, depending on their current clocked status. */
 class AttendanceToggleElement extends HTMLElement {

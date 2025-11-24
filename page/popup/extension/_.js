@@ -32,10 +32,12 @@ const clockInOutButton = document.querySelector("x-attendance-toggle");
 
 keka.isTokenValid()
     .then(isTokenValid => {
-        if (!isTokenValid) {
+        if (isTokenValid) {
+            clockInOutButton.setEnabled(true);
+        } else{
             keka.refreshToken()
                 .then(() => {
-                    console.log("Token has been refreshed. Updating UI elements.")
+                    clockInOutButton.setEnabled(true);
                     document.querySelector("x-attendance-status").updateDisplay();
                     document.querySelector("x-attendance-time").updateDisplay();
                 })
