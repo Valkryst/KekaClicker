@@ -122,13 +122,13 @@ export class KekaAPI {
     }
 
     /**
-     * Attempts to retrieve the attendance record, for a specific date, from Keka's API.
+     * Attempts to retrieve the attendance record, for whatever Keka thinks today is, from Keka's API.
      *
-     * @param date {Date} Date for which to retrieve the attendance record. Defaults to today.
      * @returns {Promise<Object>} Attendance record for the specified date.
      * @throws {Error} If the request fails, or no record is found for the specified date.
      */
-    async getAttendanceRecord(date = new Date()) {
+    async getAttendanceRecord() {
+        const date = await this.getCurrentDate();
         if (!date || !(date instanceof Date) || isNaN(date)) {
             throw new Error("Invalid date provided.");
         }
@@ -149,6 +149,9 @@ export class KekaAPI {
 
     /**
      * Attempts to retrieve the current date from Keka's API.
+     *
+     * As of 2025/11/26, Keka still doesn't respect daylight savings, so this could be an hour behind the user's
+     * local time.
      *
      * @returns {Promise<Date>} Current date, according to Keka.
      * @throws {Error} If there is an issue retrieving the current date.
