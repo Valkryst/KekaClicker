@@ -3,7 +3,7 @@
  * textContent containing "__MSG_localizationKey__" placeholders, and auto-replace them with their localized strings.
  */
 
-function localize(text) {
+export function localize(text) {
     if (!text) {
         return "Unknown";
     }
@@ -13,19 +13,23 @@ function localize(text) {
     });
 }
 
-// Localize <title>.
-const titleElement = document.querySelector("title");
-if (titleElement?.textContent) {
-    titleElement.textContent = localize(titleElement.textContent);
-}
-
-// Localize text nodes in the document body.
-const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-let node;
-while (node = walker.nextNode()) {
-    if (!node.nodeValue) {
-        continue;
+// If a document is available, we'll automatically try to localize it. This allows us to use the localize function
+// within other scripts, where document may be undefined.
+if (typeof document !== "undefined") {
+    // Localize <title>.
+    const titleElement = document.querySelector("title");
+    if (titleElement?.textContent) {
+        titleElement.textContent = localize(titleElement.textContent);
     }
 
-    node.nodeValue = localize(node.nodeValue);
+    // Localize text nodes in the document body.
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    let node;
+    while (node = walker.nextNode()) {
+        if (!node.nodeValue) {
+            continue;
+        }
+
+        node.nodeValue = localize(node.nodeValue);
+    }
 }
