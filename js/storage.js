@@ -1,4 +1,4 @@
-    /**
+/**
  * Storage key for Keka's JWT token.
  * @type {string}
  */
