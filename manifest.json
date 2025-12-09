@@ -32,6 +32,7 @@
         "https://*.keka.com/*"
     ],
     "permissions": [
+        "alarms",
         "notifications",
         "scripting",
         "storage"
