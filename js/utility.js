@@ -65,7 +65,11 @@ async function pollForToken(tabId) {
             target: {tabId},
             func: () => localStorage.getItem("access_token"),
         });
-        if (token) return token;
+
+        if (token && typeof token === "string" && token.trim() !== "") {
+            return token;
+        }
+
         await new Promise(resolve => setTimeout(resolve, POLL_CHECK_INTERVAL));
     }
     throw new Error("Token not found within timeout.");
