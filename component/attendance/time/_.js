@@ -53,22 +53,18 @@ class AttendanceTimeElement extends HTMLElement {
 
     /** Fetches the latest clocked-in time from Keka and updates the display. */
     async updateDisplay() {
+        const element = this.#getElement();
+        if (!element) {
+            console.error("Time element not found.");
+            return;
+        }
+
         let api;
         try {
             api = await KekaAPI.create();
         } catch (error) {
             console.error(error);
-            return;
-        }
-
-        if (!api) {
-            console.error("API not initialized.");
-            return;
-        }
-
-        const element = this.#getElement();
-        if (!element) {
-            console.error("Time element not found.");
+            element.textContent = chrome.i18n.getMessage("attendanceTimeError");
             return;
         }
 
