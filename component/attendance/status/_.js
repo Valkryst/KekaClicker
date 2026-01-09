@@ -49,14 +49,6 @@ class AttendanceStatusElement extends HTMLElement {
      * @returns {Promise<boolean|undefined>} Whether the user is clocked-in.
      */
     async updateDisplay(isClockedIn = undefined) {
-        let api;
-        try {
-            api = await KekaAPI.create();
-        } catch (error) {
-            console.error(error);
-            return undefined;
-        }
-
         const element = this.#getElement();
         if (!element) {
             console.error("Status element not found.");
@@ -83,10 +75,10 @@ class AttendanceStatusElement extends HTMLElement {
 
         if (isClockedIn) {
             element.textContent = chrome.i18n.getMessage("attendanceStatusClockedIn");
-            element.style.color = "lime";
+            element.style.color = "var(--dracula-green)";
         } else {
             element.textContent = chrome.i18n.getMessage("attendanceStatusClockedOut");
-            element.style.color = "red";
+            element.style.color = "var(--dracula-pink)";
         }
 
         return isClockedIn;
