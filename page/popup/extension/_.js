@@ -6,9 +6,14 @@ function closeWindow() {
     setTimeout(window.close, 50);
 }
 
-function logAndNotify(error, message) {
+async function logAndNotify(error, message) {
     console.error(error);
-    new Notification(message);
+    await chrome.notifications.create({
+        type: "basic",
+        iconUrl: "/resources/favicon/512.png",
+        title: "KekaClicker",
+        message: message
+    });
 }
 
 /** Opens the extension options page after a short delay. */
@@ -22,7 +27,7 @@ const port = chrome.runtime.connect({name: "KekaClicker"});
 // Check if the subdomain is set; if not, prompt the user to set it.
 const subdomain = await getStoredValue(SUBDOMAIN_STORE_KEY);
 if (!subdomain) {
-    new Notification(chrome.i18n.getMessage("popupFailedNoSubdomainSet"));
+    await logAndNotify(null, chrome.i18n.getMessage("popupFailedNoSubdomainSet"));
     openOptions();
 }
 
