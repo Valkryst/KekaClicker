@@ -58,5 +58,11 @@
     },
     "popupTimeClocked": {
         "message": "क्लॉक केलेला वेळ"
+    },
+    "clockOutReminderMessage": {
+        "message": "तुम्ही ८ तासांपेक्षा जास्त वेळ क्लॉक-इन केले आहे. आता क्लॉक-आउट करण्याचा विचार करा."
+    },
+    "clockOutReminderTitle": {
+        "message": "Keka कक्लॉक-आउट रिमाइंडर"
     }
 }

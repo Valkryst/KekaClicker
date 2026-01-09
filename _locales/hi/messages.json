@@ -58,5 +58,11 @@
     },
     "popupTimeClocked": {
         "message": "क्लॉक किया गया समय"
+    },
+    "clockOutReminderMessage": {
+        "message": "आप 8 घंटे से अधिक समय से काम पर हैं। अब काम से बाहर निकलने पर विचार करें।"
+    },
+    "clockOutReminderTitle": {
+        "message": "Keka क्लॉक-आउट अनुस्मारकr"
     }
 }

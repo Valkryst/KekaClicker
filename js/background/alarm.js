@@ -1,5 +1,4 @@
 import {KekaAPI} from "../api.js";
-import {localize} from "../i18n.js";
 
 const ALARM_NAME = "clockOutReminder";
 
@@ -26,11 +25,11 @@ chrome.alarms.onAlarm.addListener(async alarm => {
                 ALARM_NAME,
                 {
                     buttons: [
-                        {title: localize("__MSG_attendanceToggle__")}
+                        {title: chrome.i18n.getMessage("attendanceToggle")}
                     ],
                     iconUrl: "/resources/favicon/512.png",
-                    message: "You have been clocked-in for more than 8 hours. Consider clocking-out now.",
-                    title: "Keka Clock-Out Reminder",
+                    message: chrome.i18n.getMessage("clockOutReminderMessage"),
+                    title: chrome.i18n.getMessage("clockOutReminderTitle"),
                     type: "basic"
                 }
             );

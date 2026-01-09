@@ -78,5 +78,13 @@
     "popupTimeClocked": {
         "message": "Time Clocked",
         "description": "Label displayed to the left of the amount of time spent clocked-in to Keka today."
+    },
+    "clockOutReminderMessage": {
+        "message": "You have been clocked-in for more than 8 hours. Consider clocking-out now.",
+        "description": "Notification message displayed when user has been clocked-in for 8+ hours."
+    },
+    "clockOutReminderTitle": {
+        "message": "Keka Clock-Out Reminder",
+        "description": "Title for the clock-out reminder notification."
     }
 }

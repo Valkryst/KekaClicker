@@ -58,5 +58,11 @@
     },
     "popupTimeClocked": {
         "message": "கணக்கில் செலவிட்ட நேரம்"
+    },
+    "clockOutReminderMessage": {
+        "message": "நீங்கள் 8 மணி நேரத்திற்கும் மேலாக வேலையில் உள்ளீர்கள். இப்போது வெளியேறுவதைக் கருத்தில் கொள்ளுங்கள்."
+    },
+    "clockOutReminderTitle": {
+        "message": "Keka வேலை முடிப்பு நினைவூட்டல்"
     }
 }
