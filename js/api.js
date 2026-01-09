@@ -178,7 +178,7 @@ export class KekaAPI {
     /**
      * Attempts to retrieve the time spent clocked-in today, using Keka's API.
      *
-     * @returns {Promise<String>} Time spent clocked-in, in seconds.
+     * @returns {Promise<number>} Time spent clocked-in, in seconds.
      * @throws {Error} If there is an issue calculating the time spent clocked-in.
      */
     async getTimeClocked() {
