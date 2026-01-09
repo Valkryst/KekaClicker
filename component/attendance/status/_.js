@@ -45,7 +45,7 @@ class AttendanceStatusElement extends HTMLElement {
      *
      * If undefined is given as a parameter, then the latest status is fetched from Keka.
      *
-     * @param {boolean} isClockedIn Whether
+     * @param {boolean} isClockedIn Whether the user is clocked-in. If undefined, fetch from API.
      * @returns {Promise<boolean|undefined>} Whether the user is clocked-in.
      */
     async updateDisplay(isClockedIn = undefined) {
@@ -56,8 +56,12 @@ class AttendanceStatusElement extends HTMLElement {
         }
 
         if (!isClockedIn) {
-            if (!api) {
-                console.error("API not initialized.");
+            let api;
+            try {
+                api = await KekaAPI.create();
+            } catch (error) {
+                console.error(error);
+                element.textContent = chrome.i18n.getMessage("attendanceStatusError");
                 return undefined;
             }
 
