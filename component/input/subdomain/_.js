@@ -18,12 +18,16 @@ class SubdomainInputElement extends HTMLElement {
     }
 
     /** Validates the input value, providing feedback to the user if required, and saves the value if it's valid. */
-    #validateAndSave() {
+    async #validateAndSave() {
         const inputElement = this.#getInputElement();
         inputElement.setCustomValidity("");
 
         if (inputElement.checkValidity()) {
-            setStoredValue(SUBDOMAIN_STORE_KEY, this.#getInputValue());
+            try {
+                await setStoredValue(SUBDOMAIN_STORE_KEY, this.#getInputValue());
+            } catch (error) {
+                console.error("Failed to save subdomain:", error);
+            }
         } else {
             inputElement.setCustomValidity(chrome.i18n.getMessage("optionsSubdomainInvalid"));
         }
