@@ -36,20 +36,23 @@ const keka = await KekaAPI.create();
 const clockInOutButton = document.querySelector("x-attendance-toggle");
 
 keka.isTokenValid()
-    .then(isTokenValid => {
+    .then(async isTokenValid => {
         if (isTokenValid) {
             clockInOutButton.setEnabled(true);
-        } else{
-            keka.refreshToken()
-                .then(() => {
-                    clockInOutButton.setEnabled(true);
-                    document.querySelector("x-attendance-status").updateDisplay();
-                    document.querySelector("x-attendance-time").updateDisplay();
-                })
+        } else {
+            try {
+                await keka.refreshToken();
+                clockInOutButton.setEnabled(true);
+                document.querySelector("x-attendance-status").updateDisplay();
+                document.querySelector("x-attendance-time").updateDisplay();
+            } catch (error) {
+                await logAndNotify(error, chrome.i18n.getMessage("popupFailedToRefreshToken"));
+                closeWindow();
+            }
         }
     })
-    .catch(error => {
-        logAndNotify(error, chrome.i18n.getMessage("popupFailedToValidateToken"));
+    .catch(async error => {
+        await logAndNotify(error, chrome.i18n.getMessage("popupFailedToValidateToken"));
         closeWindow();
     });
 
@@ -57,15 +60,13 @@ keka.isTokenValid()
 clockInOutButton.addEventListener("click", async () => {
     clockInOutButton.setEnabled(false);
 
-    keka.clockInOut()
-        .then(isClockedIn => {
-            document.querySelector("x-attendance-status")
-                .updateDisplay(isClockedIn)
-                .then(() => clockInOutButton.setEnabled(true))
-        })
-        .catch(error => {
-            logAndNotify(error, chrome.i18n.getMessage("popupFailedToToggleAttendance"));
-            closeWindow();
-        })
-        .finally(() => clockInOutButton.setEnabled(true));
+    try {
+        const isClockedIn = await keka.clockInOut();
+        document.querySelector("x-attendance-status").updateDisplay(isClockedIn);
+    } catch (error) {
+        await logAndNotify(error, chrome.i18n.getMessage("popupFailedToToggleAttendance"));
+        closeWindow();
+    } finally {
+        clockInOutButton.setEnabled(true);
+    }
 });
