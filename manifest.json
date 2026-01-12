@@ -5,7 +5,7 @@
     "description": "__MSG_extensionDescription__",
     "name": "__MSG_extensionName__",
     "short_name": "__MSG_extensionName__",
-    "version": "1.4",
+    "version": "1.5",
 
     "action": {
         "default_popup":"./page/popup/extension/_.html",
