@@ -64,5 +64,29 @@
     },
     "clockOutReminderTitle": {
         "message": "Keka வேலை முடிப்பு நினைவூட்டல்"
+    },
+    "optionsAutoClockTitle": {
+        "message": "தானியங்கி கடிகார உள்ளீடு/வெளியீடு"
+    },
+    "optionsAutoClockDescription": {
+        "message": "திங்கள் முதல் வெள்ளி வரை உங்கள் உள்ளூர் நேரத்தைப் பயன்படுத்தி தானியங்கியாக கடிகார உள்ளீடு மற்றும் வெளியீட்டு நேரங்களை அமைக்கவும்."
+    },
+    "optionsAutoClockInLabel": {
+        "message": "கடிகார உள்ளீட்டு நேரம்"
+    },
+    "optionsAutoClockOutLabel": {
+        "message": "கடிகார வெளியீட்டு நேரம்"
+    },
+    "optionsAutoClockInEnabledLabel": {
+        "message": "தானியங்கி கடிகார உள்ளீட்டை இயக்கு"
+    },
+    "optionsAutoClockOutEnabledLabel": {
+        "message": "தானியங்கி கடிகார வெளியீட்டை இயக்கு"
+    },
+    "optionsAutoClockInSection": {
+        "message": "கடிகார உள்ளீடு"
+    },
+    "optionsAutoClockOutSection": {
+        "message": "கடிகார வெளியீடு"
     }
 }

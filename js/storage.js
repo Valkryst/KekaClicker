@@ -11,13 +11,41 @@ export const TOKEN_STORE_KEY = "jwt";
 export const SUBDOMAIN_STORE_KEY = "subdomain";
 
 /**
+ * Storage key for the automatic clock-in time.
+ * @type {string}
+ */
+export const AUTO_CLOCK_IN_TIME_KEY = "autoClockInTime";
+
+/**
+ * Storage key for the automatic clock-out time.
+ * @type {string}
+ */
+export const AUTO_CLOCK_OUT_TIME_KEY = "autoClockOutTime";
+
+/**
+ * Storage key for whether automatic clock-in is enabled.
+ * @type {string}
+ */
+export const AUTO_CLOCK_IN_ENABLED_KEY = "autoClockInEnabled";
+
+/**
+ * Storage key for whether automatic clock-out is enabled
+ * @type {string}
+ */
+export const AUTO_CLOCK_OUT_ENABLED_KEY = "autoClockOutEnabled";
+
+/**
  * Default values for each store key.
  *
- * @type {{TOKEN_STORE_KEY: string, SUBDOMAIN_STORE_KEY: string}}
+ * @type {{TOKEN_STORE_KEY: string, SUBDOMAIN_STORE_KEY: string, AUTO_CLOCK_IN_TIME_KEY: string, AUTO_CLOCK_OUT_TIME_KEY: string, AUTO_CLOCK_IN_ENABLED_KEY: boolean, AUTO_CLOCK_OUT_ENABLED_KEY: boolean}}
  */
 const DEFAULT_STORE_VALUES = {
     [TOKEN_STORE_KEY]: "",
-    [SUBDOMAIN_STORE_KEY]: ""
+    [SUBDOMAIN_STORE_KEY]: "",
+    [AUTO_CLOCK_IN_TIME_KEY]: "",
+    [AUTO_CLOCK_OUT_TIME_KEY]: "",
+    [AUTO_CLOCK_IN_ENABLED_KEY]: false,
+    [AUTO_CLOCK_OUT_ENABLED_KEY]: false
 }
 
 /**

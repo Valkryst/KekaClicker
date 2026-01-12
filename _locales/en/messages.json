@@ -86,5 +86,37 @@
     "clockOutReminderTitle": {
         "message": "Keka Clock-Out Reminder",
         "description": "Title for the clock-out reminder notification."
+    },
+    "optionsAutoClockTitle": {
+        "message": "Automatic Clock-In/Out",
+        "description": "Title for the automatic clock-in/out settings section."
+    },
+    "optionsAutoClockDescription": {
+        "message": "Set times to automatically clock-in and clock-out, Monday to Friday, using your local time.",
+        "description": "Description for the automatic clock-in/out feature."
+    },
+    "optionsAutoClockInLabel": {
+        "message": "Clock-In Time",
+        "description": "Label for the clock-in time input."
+    },
+    "optionsAutoClockOutLabel": {
+        "message": "Clock-Out Time",
+        "description": "Label for the clock-out time input."
+    },
+    "optionsAutoClockInEnabledLabel": {
+        "message": "Enable auto clock-in",
+        "description": "Label for the enable auto clock-in checkbox."
+    },
+    "optionsAutoClockOutEnabledLabel": {
+        "message": "Enable auto clock-out",
+        "description": "Label for the enable auto clock-out checkbox."
+    },
+    "optionsAutoClockInSection": {
+        "message": "Clock-In",
+        "description": "Subheader for clock-in settings."
+    },
+    "optionsAutoClockOutSection": {
+        "message": "Clock-Out",
+        "description": "Subheader for clock-out settings."
     }
 }

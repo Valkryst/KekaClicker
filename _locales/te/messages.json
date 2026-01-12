@@ -64,5 +64,29 @@
     },
     "clockOutReminderTitle": {
         "message": "Keka క్లాక్-అవుట్ రిమైండర్"
+    },
+    "optionsAutoClockTitle": {
+        "message": "స్వయంచాలక గడియారం-ఇన్/అవుట్"
+    },
+    "optionsAutoClockDescription": {
+        "message": "మీ స్థానిక సమయాన్ని ఉపయోగించి, సోమవారం నుండి శుక్రవారం వరకు, స్వయంచాలకంగా గడియారం-ఇన్ మరియు గడియారం-అవుట్ చేయడానికి సమయాలను సెట్ చేయండి."
+    },
+    "optionsAutoClockInLabel": {
+        "message": "గడియారం-ఇన్ సమయం"
+    },
+    "optionsAutoClockOutLabel": {
+        "message": "గడియారం-అవుట్ సమయం"
+    },
+    "optionsAutoClockInEnabledLabel": {
+        "message": "స్వయంచాలక గడియారం-ఇన్ ప్రారంభించు"
+    },
+    "optionsAutoClockOutEnabledLabel": {
+        "message": "స్వయంచాలక గడియారం-అవుట్ ప్రారంభించు"
+    },
+    "optionsAutoClockInSection": {
+        "message": "గడియారం-ఇన్"
+    },
+    "optionsAutoClockOutSection": {
+        "message": "గడియారం-అవుట్"
     }
 }

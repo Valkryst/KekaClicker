@@ -64,5 +64,29 @@
     },
     "clockOutReminderTitle": {
         "message": "Keka क्लॉक-आउट अनुस्मारकr"
+    },
+    "optionsAutoClockTitle": {
+        "message": "स्वचालित क्लॉक-इन/आउट"
+    },
+    "optionsAutoClockDescription": {
+        "message": "अपने स्थानीय समय का उपयोग करते हुए, सोमवार से शुक्रवार तक स्वचालित रूप से क्लॉक-इन और क्लॉक-आउट करने के लिए समय सेट करें।"
+    },
+    "optionsAutoClockInLabel": {
+        "message": "क्लॉक-इन समय"
+    },
+    "optionsAutoClockOutLabel": {
+        "message": "क्लॉक-आउट समय"
+    },
+    "optionsAutoClockInEnabledLabel": {
+        "message": "स्वचालित क्लॉक-इन सक्षम करें"
+    },
+    "optionsAutoClockOutEnabledLabel": {
+        "message": "स्वचालित क्लॉक-आउट सक्षम करें"
+    },
+    "optionsAutoClockInSection": {
+        "message": "क्लॉक-इन"
+    },
+    "optionsAutoClockOutSection": {
+        "message": "क्लॉक-आउट"
     }
 }
