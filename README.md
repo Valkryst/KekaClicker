@@ -1,6 +1,6 @@
 KekaClicker allows you to perform the following actions without navigating to Keka:
 
-1. Clock-in or clock-out of Keka.
+1. Clock-in or clock-out of Keka, either manually or on a schedule.
 2. View your current clock-in status.
 3. View your "Hours Worked" (also known as "Effective Hours").
 
