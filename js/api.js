@@ -261,12 +261,16 @@ export class KekaAPI {
     }
 
     /**
-     * Retrieves the stored token and makes it available as a property.
+     * Retrieves the stored token, validates it, and refreshes it if necessary.
      *
      * @returns {Promise<void>}
-     * @throws {Error} See {@link getStoredValue} for possible errors.
+     * @throws {Error} If there is an issue retrieving or validating the token.
      */
     async #setToken() {
         this.token = await getStoredValue(TOKEN_STORE_KEY);
+
+        if (!this.token || !(await this.isTokenValid())) {
+            await this.refreshToken();
+        }
     }
 }
