@@ -1,19 +1,10 @@
 import {KekaAPI} from "../../../js/api.js";
 import {getStoredValue, SUBDOMAIN_STORE_KEY} from "../../../js/storage.js";
+import {sendNotification} from "../../../js/notification.js";
 
 /** Closes the popup window after a short delay. */
 function closeWindow() {
     setTimeout(window.close, 50);
-}
-
-async function logAndNotify(error, message) {
-    console.error(error);
-    await chrome.notifications.create({
-        type: "basic",
-        iconUrl: "/resources/favicon/512.png",
-        title: "KekaClicker",
-        message: message
-    });
 }
 
 /** Opens the extension options page after a short delay. */
@@ -27,7 +18,7 @@ const port = chrome.runtime.connect({name: "KekaClicker"});
 // Check if the subdomain is set; if not, prompt the user to set it.
 const subdomain = await getStoredValue(SUBDOMAIN_STORE_KEY);
 if (!subdomain) {
-    await logAndNotify(null, chrome.i18n.getMessage("popupFailedNoSubdomainSet"));
+    await sendNotification(chrome.i18n.getMessage("popupFailedNoSubdomainSet"), "error");
     openOptions();
 }
 
@@ -46,13 +37,13 @@ keka.isTokenValid()
                 document.querySelector("x-attendance-status").updateDisplay();
                 document.querySelector("x-attendance-time").updateDisplay();
             } catch (error) {
-                await logAndNotify(error, chrome.i18n.getMessage("popupFailedToRefreshToken"));
+                await sendNotification(chrome.i18n.getMessage("popupFailedToRefreshToken"), "error", error);
                 closeWindow();
             }
         }
     })
     .catch(async error => {
-        await logAndNotify(error, chrome.i18n.getMessage("popupFailedToValidateToken"));
+        await sendNotification(chrome.i18n.getMessage("popupFailedToValidateToken"), "error", error);
         closeWindow();
     });
 
@@ -64,7 +55,7 @@ clockInOutButton.addEventListener("click", async () => {
         const isClockedIn = await keka.clockInOut();
         document.querySelector("x-attendance-status").updateDisplay(isClockedIn);
     } catch (error) {
-        await logAndNotify(error, chrome.i18n.getMessage("popupFailedToToggleAttendance"));
+        await sendNotification(chrome.i18n.getMessage("popupFailedToToggleAttendance"), "error", error);
         closeWindow();
     } finally {
         clockInOutButton.setEnabled(true);
