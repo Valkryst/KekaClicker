@@ -1,5 +1,5 @@
 import {getStoredValue, setStoredValue, SUBDOMAIN_STORE_KEY, TOKEN_STORE_KEY} from "./storage.js";
-import {getToken} from "./utility.js";
+import {getToken, openKeka} from "./utility.js";
 
 export class KekaAPI {
     /** You should call the async {@link create()} method instead of calling this directly. */
@@ -23,28 +23,52 @@ export class KekaAPI {
      *
      * The requests are identical. You may want to check the current clock-in status before calling this method.
      *
+     * @param {boolean} useAPI Whether to use the API endpoint or to open a background tab and send the request VIA it.
      * @returns {Promise<boolean>} Whether the user is clocked in.
      */
-    async clockInOut() {
-       const response = await fetch(`${this.domain}/k/dashboard/api/mytime/attendance/webclockin`, {
-           credentials: "include",
-           body: JSON.stringify({
-               timestamp: new Date().toISOString(),
-               attendanceLogSource: 1,
-               locationAddress: null,
-               manualClockinType: 1,
-               note: "",
-               originalPunchStatus: 1
-           }),
-           method: "POST",
-           headers: this.#getHeaders(),
-       });
+    async clockInOut(useAPI = true) {
+        const url = `${this.domain}/k/dashboard/api/mytime/attendance/webclockin`;
 
-       if (!response.ok) {
+        const request = {
+            credentials: "include",
+            body: JSON.stringify({
+                timestamp: new Date().toISOString(),
+                attendanceLogSource: 1,
+                locationAddress: null,
+                manualClockinType: 1,
+                note: "",
+                originalPunchStatus: 1
+            }),
+            method: "POST",
+            headers: this.#getHeaders(),
+        };
+
+        let response;
+        if (useAPI) {
+            response = await fetch(url, request);
+        } else {
+            // Keka's API appears to detect if the request originated in a background script, so we need to bypass the
+            // check by sending it VIA a background tab.
+            const tab = await openKeka();
+            response = await chrome.scripting.executeScript({
+                args: [url, request],
+                target: {tabId: tab.id},
+                func: async (url, init) => {
+                    const response = await fetch(url, init);
+                    return {ok: response.ok,};
+                }
+            });
+        }
+
+        if (!response) {
+            throw new Error(`Clock-in/out failed: Response is null.`)
+        }
+
+        if (!response.ok) {
           throw new Error(`Clock-in/out failed: ${response.statusText}`);
-       }
+        }
 
-       return await this.isClockedIn();
+        return await this.isClockedIn();
     }
 
     /**

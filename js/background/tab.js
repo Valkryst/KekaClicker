@@ -1,26 +1,13 @@
-let activeTabId = null;
-
-chrome.runtime.onConnect.addListener((port) => {
+chrome.runtime.onConnect.addListener(async (port) => {
     if (port.name !== "popup") {
         return;
     }
 
-    port.onDisconnect.addListener(() => {
+    port.onDisconnect.addListener(async () => {
+        const {activeTabId} = await chrome.storage.local.get("activeTabId");
         if (activeTabId) {
-            chrome.tabs.remove(activeTabId);
-            activeTabId = null;
+            await chrome.tabs.remove(activeTabId);
+            await chrome.storage.local.remove("activeTabId");
         }
     });
-});
-
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.type === "SET_ACTIVE_TAB") {
-        activeTabId = message.tabId;
-    }
-});
-
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.type === "CLEAR_ACTIVE_TAB") {
-        activeTabId = null;
-    }
 });

@@ -47,7 +47,7 @@ export async function openKeka() {
         throw new Error("Failed to open Keka in a background tab.");
     }
 
-    chrome.runtime.sendMessage({type: "SET_ACTIVE_TAB", tabId: tab.id});
+    await chrome.storage.local.set({activeTabId: tab.id});
     return tab;
 }
 
