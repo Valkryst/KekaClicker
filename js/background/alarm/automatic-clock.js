@@ -40,17 +40,10 @@ async function handleAutoClock(api) {
         getStoredValue(AUTO_CLOCK_OUT_TIME_KEY)
     ]);
 
-    const isClockedIn = true;
+    const isClockedIn = await api.isClockedIn();
 
-    const clockInCondition = clockInEnabled && clockInTime && currentTime === "20:21" && !isClockedIn;
-    const clockOutCondition = clockOutEnabled && clockOutTime && currentTime === "21:08" && isClockedIn;
-
-    console.debug(`Clock-in condition: ${clockInCondition}. Clock-out condition: ${clockOutCondition}.`);
-    console.debug(`Current time: ${currentTime}.`);
-    console.debug(`Is clocked in: ${isClockedIn}.`);
-    console.debug(`Clock-in enabled: ${clockInEnabled}. Clock-in time: ${clockInTime}.`);
-    console.debug(`Clock-out enabled: ${clockOutEnabled}. Clock-out time: ${clockOutTime}.`);
-    console.debug("");
+    const clockInCondition = clockInEnabled && clockInTime && currentTime === clockInTime && !isClockedIn;
+    const clockOutCondition = clockOutEnabled && clockOutTime && currentTime === clockOutTime && isClockedIn;
 
     if (clockInCondition) {
         try {
